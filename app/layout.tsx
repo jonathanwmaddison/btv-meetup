@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import { Sora, Source_Sans_3 } from "next/font/google";
+import { Instrument_Serif, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 
-const headingFont = Sora({
+const headingFont = Instrument_Serif({
+  weight: "400",
   subsets: ["latin"],
   variable: "--font-heading"
 });
