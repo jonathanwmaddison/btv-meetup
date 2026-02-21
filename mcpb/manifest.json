@@ -1,0 +1,63 @@
+{
+  "manifest_version": "0.3",
+  "name": "btv-meetup",
+  "display_name": "BTV Meetup",
+  "version": "1.0.0",
+  "description": "Discover events, RSVP, and collaborate with Burlington's AI-in-software community — from Claude.",
+  "long_description": "Connect Claude to the BTV Meetup community for people interested in using AI in software development. Browse upcoming events, RSVP with a single command, check in on the day of, submit and vote on meetup ideas, and more. Organizers can also create and manage events directly through Claude.",
+  "author": {
+    "name": "BTV Meetup"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.js"],
+      "env": {
+        "BTV_MEETUP_API_URL": "${user_config.api_url}",
+        "BTV_MEETUP_API_TOKEN": "${user_config.api_token}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "find_upcoming_events", "description": "List upcoming published meetup events" },
+    { "name": "get_event_details", "description": "Get details and capacity snapshot for one event" },
+    { "name": "rsvp_to_event", "description": "RSVP the current user to an event" },
+    { "name": "cancel_my_rsvp", "description": "Cancel one of the current user's RSVPs" },
+    { "name": "my_upcoming_rsvps", "description": "List the current user's active upcoming RSVPs" },
+    { "name": "submit_meetup_idea", "description": "Submit a new meetup idea for organizers" },
+    { "name": "browse_meetup_ideas", "description": "Browse recently submitted meetup ideas" },
+    { "name": "get_my_profile", "description": "Get the current user's profile" },
+    { "name": "vote_on_idea", "description": "Upvote or downvote a meetup idea" },
+    { "name": "get_event_attendees", "description": "Get a privacy-respecting attendee list" },
+    { "name": "export_event_to_calendar", "description": "Export an event as an ICS calendar file" },
+    { "name": "check_in_to_event", "description": "Check in to an event on the day of" },
+    { "name": "create_event", "description": "Create a new event (organizer/admin only)" },
+    { "name": "update_event", "description": "Update an existing event (organizer/admin only)" },
+    { "name": "view_attendee_list", "description": "Get full attendee list with emails (organizer/admin only)" }
+  ],
+  "user_config": {
+    "api_url": {
+      "type": "string",
+      "title": "BTV Meetup API URL",
+      "description": "The URL of your BTV Meetup server (e.g. https://btv-meetup.example.com/api/mcp)",
+      "required": true
+    },
+    "api_token": {
+      "type": "string",
+      "title": "API Token",
+      "description": "Your personal MCP token from Settings → Integrations",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=16.0.0"
+    }
+  },
+  "license": "MIT"
+}
