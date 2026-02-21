@@ -203,7 +203,7 @@ export function McpTokenManager({ mcpUrl, initialTokens }: Props) {
         <section className="card">
           <h2>Claude Desktop (Free) — MCPB Install</h2>
           <p className="muted">
-            Download the MCP bundle, then open it in Claude Desktop. You'll be prompted for the API URL and token.
+            Download the MCP bundle, then open it in Claude Desktop. You&apos;ll be prompted for the API URL and token.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
             <a href="/btv-meetup.mcpb" className="button-link" download>
