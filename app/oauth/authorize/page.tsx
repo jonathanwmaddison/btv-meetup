@@ -22,7 +22,7 @@ export default async function OAuthAuthorizePage({ searchParams }: Props) {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    const entries = Object.entries(params).filter(([, v]): v is string => typeof v === "string" && v.length > 0);
+    const entries = Object.entries(params).filter((entry): entry is [string, string] => typeof entry[1] === "string" && entry[1].length > 0);
     const qs = new URLSearchParams(entries).toString();
     redirect(`/auth/login?next=${encodeURIComponent(`/oauth/authorize?${qs}`)}`);
   }
